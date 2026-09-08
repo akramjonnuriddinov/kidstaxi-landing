@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KidsTaxi — Farzandingiz uchun xavfsiz yo'l. Har kuni.</title>
+<meta name="description" content="KidsTaxi — bog'cha yoshidagi bolalarni uyidan bog'chaga, bog'chadan uyiga har kuni xavfsiz eltib qo'yadigan doimiy transport xizmati. Namangan.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    --color-navy: #16213D;
+    --color-navy-2: #1F2C4C;
+    --color-amber: #D98E2B;
+    --color-amber-deep: #B36F1B;
+    --color-paper: #FCFBF9;
+    --color-paper-soft: #F6F2EA;
+    --color-ink: #1F2430;
+    --color-line: #D9D3C7;
+    --color-sage: #4F7A5D;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Manrope', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: theme(--font-body); color: var(--color-ink); background: var(--color-paper); }
+  .font-display { font-family: theme(--font-display); }
+</style>
+
+<style>
+  /* small custom bits Tailwind utilities don't cleanly cover */
+  .phone-shadow{ box-shadow: 0 30px 60px -15px rgba(22,33,61,0.45), 0 10px 20px -8px rgba(22,33,61,0.3); }
+  .hero-fade{ animation: heroFade 1s ease-out both; }
+  .hero-fade-1{ animation-delay: .05s; }
+  .hero-fade-2{ animation-delay: .18s; }
+  .hero-fade-3{ animation-delay: .30s; }
+  .hero-fade-4{ animation-delay: .42s; }
+  @keyframes heroFade{ from{ opacity:0; transform: translateY(14px);} to{ opacity:1; transform: translateY(0);} }
+  @media (prefers-reduced-motion: reduce){
+    .hero-fade{ animation: none; }
+  }
+  #mobile-menu{ transition: max-height .35s ease, opacity .25s ease; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <img src="images/logo-icon.png" alt="KidsTaxi" class="w-8 h-8">
+      <span class="font-display italic font-semibold text-lg text-navy">KidsTaxi</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-[14.5px] text-ink/80">
+      <a href="#qanday-ishlaydi" class="hover:text-navy transition-colors">Qanday ishlaydi</a>
+      <a href="#ilova" class="hover:text-navy transition-colors">Ilova</a>
+      <a href="#xavfsizlik" class="hover:text-navy transition-colors">Xavfsizlik</a>
+      <a href="#bogchalar" class="hover:text-navy transition-colors">Bog'chalar uchun</a>
+    </nav>
+
+    <a href="#aloqa" class="hidden md:inline-flex items-center rounded-full bg-navy text-paper text-[14px] font-medium px-5 py-2.5 hover:bg-navy-2 transition-colors">
+      Bog'lanish
+    </a>
+
+    <button id="menu-btn" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menyu">
+      <span class="block w-5 h-[1.5px] bg-navy"></span>
+      <span class="block w-5 h-[1.5px] bg-navy"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 opacity-0">
+    <nav class="flex flex-col gap-1 px-6 pb-5 text-[15px] text-ink/85">
+      <a href="#qanday-ishlaydi" class="py-2.5 border-b border-line/70">Qanday ishlaydi</a>
+      <a href="#ilova" class="py-2.5 border-b border-line/70">Ilova</a>
+      <a href="#xavfsizlik" class="py-2.5 border-b border-line/70">Xavfsizlik</a>
+      <a href="#bogchalar" class="py-2.5 border-b border-line/70">Bog'chalar uchun</a>
+      <a href="#aloqa" class="mt-3 inline-flex justify-center rounded-full bg-navy text-paper text-[14px] font-medium px-5 py-2.5">Bog'lanish</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="relative bg-navy overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20 md:pb-28 grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <h1 class="hero-fade hero-fade-1 font-display text-[38px] leading-[1.12] sm:text-[46px] sm:leading-[1.1] md:text-[52px] md:leading-[1.08] text-paper max-w-[13ch]">
+        Farzandingiz uchun xavfsiz yo'l. Har kuni.
+      </h1>
+
+      <p class="hero-fade hero-fade-2 mt-6 text-[16px] leading-relaxed text-paper/70 max-w-[42ch]">
+        Bog'chaga borish va qaytish endi ota-onaning tashvishi emas.
+        Doimiy haydovchi, jonli kuzatuv va real vaqtda xabarnomalar bilan
+        — bu KidsTaxi ishi.
+      </p>
+
+      <div class="hero-fade hero-fade-3 mt-8 flex gap-4">
+        <div class="border border-white/20 px-5 py-3 min-w-[132px]">
+          <div class="text-[12px] text-paper/50">Uy → Bog'cha</div>
+          <div class="font-display font-semibold text-[19px] text-paper mt-0.5">08:00</div>
+        </div>
+        <div class="border border-white/20 px-5 py-3 min-w-[132px]">
+          <div class="text-[12px] text-paper/50">Bog'cha → Uy</div>
+          <div class="font-display font-semibold text-[19px] text-paper mt-0.5">17:00</div>
+        </div>
+      </div>
+
+      <div class="hero-fade hero-fade-4 mt-9 flex flex-wrap gap-4">
+        <a href="#aloqa" class="inline-flex items-center justify-center rounded-full bg-amber text-navy font-semibold text-[15px] px-7 py-3.5 hover:bg-amber-deep hover:text-paper transition-colors">
+          Pilotga yozilish
+        </a>
+        <a href="#qanday-ishlaydi" class="inline-flex items-center justify-center rounded-full border border-white/25 text-paper text-[15px] px-7 py-3.5 hover:bg-white/5 transition-colors">
+          Qanday ishlaydi
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-fade hero-fade-3 relative flex justify-center md:justify-end">
+      <div class="bg-paper rounded-[22px] p-3 phone-shadow w-[240px] sm:w-[270px]">
+        <img src="images/p1_kirish.jpg" alt="KidsTaxi ilovasi kirish ekrani" class="rounded-[16px] w-full block">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<section class="bg-paper">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.15] text-navy max-w-[16ch]">
+      Ota-onalar nimaga duch keladi?
+    </h2>
+    <p class="mt-5 text-[15.5px] leading-relaxed text-ink/70 max-w-[52ch]">
+      Bog'cha yoshidagi bola bilan ishlaydigan ota-onalar har kuni bir xil uchta muammoga duch keladi.
+    </p>
+
+    <div class="mt-14 grid sm:grid-cols-3 gap-10 sm:gap-8">
+      <div class="border-t-2 border-navy pt-5">
+        <svg class="w-7 h-7" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10.5" stroke="#B36F1B" stroke-width="1.5"/><path d="M14 8 V14 L18.5 16.5" stroke="#B36F1B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="font-display font-semibold text-[17px] text-navy mt-4">Vaqt yetishmasligi</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink/65">Ishga shoshilish va bolani bog'chaga olib borish-keltirishni birlashtirish qiyin.</p>
+      </div>
+      <div class="border-t-2 border-navy pt-5">
+        <svg class="w-7 h-7" viewBox="0 0 28 28" fill="none"><rect x="4" y="13" width="20" height="7" rx="2" stroke="#B36F1B" stroke-width="1.5"/><path d="M6 13 L9 7 H19 L22 13" stroke="#B36F1B" stroke-width="1.5" stroke-linejoin="round"/><circle cx="9" cy="20.5" r="1.8" stroke="#B36F1B" stroke-width="1.4"/><circle cx="19" cy="20.5" r="1.8" stroke="#B36F1B" stroke-width="1.4"/></svg>
+        <h3 class="font-display font-semibold text-[17px] text-navy mt-4">Transport muammosi</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink/65">Har kuni bola uchun alohida transport topish noqulay va vaqt talab qiladi.</p>
+      </div>
+      <div class="border-t-2 border-navy pt-5">
+        <svg class="w-7 h-7" viewBox="0 0 28 28" fill="none"><path d="M14 3 L23 7 V13.5 C23 20 19 24 14 25.5 C9 24 5 20 5 13.5 V7 Z" stroke="#B36F1B" stroke-width="1.5" stroke-linejoin="round"/><text x="14" y="18" font-family="Georgia,serif" font-size="10" fill="#B36F1B" text-anchor="middle">?</text></svg>
+        <h3 class="font-display font-semibold text-[17px] text-navy mt-4">Xavotir</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink/65">"Bolamni kim olib ketadi? Qachon yetib boradi?" — javobsiz savollar.</p>
+      </div>
+    </div>
+
+    <p class="mt-14 border-l-2 border-amber pl-6 font-display italic text-[19px] sm:text-[21px] text-navy max-w-[28ch] leading-snug">
+      KidsTaxi shu uchta muammoni bitta xizmatda hal qiladi.
+    </p>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="qanday-ishlaydi" class="bg-paper-soft">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="grid md:grid-cols-2 gap-14 items-start">
+      <div>
+        <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.15] text-navy max-w-[15ch]">
+          KidsTaxi qanday ishlaydi?
+        </h2>
+        <p class="mt-5 text-[15.5px] leading-relaxed text-ink/70 max-w-[46ch]">
+          Bog'cha yoshidagi bolalarni uyidan bog'chaga, bog'chadan uyiga
+          har kuni xavfsiz eltib qo'yadigan doimiy transport xizmati.
+        </p>
+
+        <div class="mt-10 space-y-5">
+          <div>
+            <div class="text-[11px] tracking-wide text-ink/45">ERTALAB</div>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-display font-semibold text-navy text-[15px]">Uy</span>
+              <span class="flex-1 h-px bg-line relative"><span class="absolute right-0 -top-[3px] w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-amber"></span></span>
+              <span class="font-display font-semibold text-amber-deep text-[17px]">08:00</span>
+              <span class="flex-1 h-px bg-line relative"><span class="absolute right-0 -top-[3px] w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-amber"></span></span>
+              <span class="font-display font-semibold text-navy text-[15px]">Bog'cha</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-[11px] tracking-wide text-ink/45">KECHQURUN</div>
+            <div class="flex items-center gap-3 mt-2">
+              <span class="font-display font-semibold text-navy text-[15px]">Bog'cha</span>
+              <span class="flex-1 h-px bg-line relative"><span class="absolute right-0 -top-[3px] w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-amber"></span></span>
+              <span class="font-display font-semibold text-amber-deep text-[17px]">17:00</span>
+              <span class="flex-1 h-px bg-line relative"><span class="absolute right-0 -top-[3px] w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-amber"></span></span>
+              <span class="font-display font-semibold text-navy text-[15px]">Uy</span>
+            </div>
+          </div>
+        </div>
+
+        <img src="images/driver-van.jpg" alt="KidsTaxi haydovchisi va transport" class="mt-10 w-full h-[220px] object-cover">
+      </div>
+
+      <div class="grid grid-cols-2 gap-x-8 gap-y-10">
+        <div class="border-t border-navy pt-4">
+          <div class="font-display italic text-amber-deep text-[15px]">01</div>
+          <h4 class="font-display font-semibold text-navy text-[16px] mt-1">Ro'yxatdan o'tish</h4>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Ota-ona farzandini KidsTaxi xizmatiga ro'yxatdan o'tkazadi.</p>
+        </div>
+        <div class="border-t border-navy pt-4">
+          <div class="font-display italic text-amber-deep text-[15px]">02</div>
+          <h4 class="font-display font-semibold text-navy text-[16px] mt-1">Doimiy haydovchi</h4>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Bolaga bir xil, tanish haydovchi biriktiriladi.</p>
+        </div>
+        <div class="border-t border-navy pt-4">
+          <div class="font-display italic text-amber-deep text-[15px]">03</div>
+          <h4 class="font-display font-semibold text-navy text-[16px] mt-1">Kundalik marshrut</h4>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Belgilangan vaqtda uy va bog'cha orasida barqaror qatnov.</p>
+        </div>
+        <div class="border-t border-navy pt-4">
+          <div class="font-display italic text-amber-deep text-[15px]">04</div>
+          <h4 class="font-display font-semibold text-navy text-[16px] mt-1">Xabarnoma</h4>
+          <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Olib ketilgan va yetkazilgan har bir daqiqada ota-onaga xabar boradi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APP SHOWCASE ================= -->
+<section id="ilova" class="bg-navy">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.15] text-paper max-w-[18ch]">
+      Ota-ona hamma narsani ilovadan kuzatadi
+    </h2>
+    <p class="mt-5 text-[15.5px] leading-relaxed text-paper/65 max-w-[52ch]">
+      KidsTaxi shunchaki mashina xizmati emas — ota-ona har bir qadamni
+      telefonidan boshqaradigan texnologik platforma.
+    </p>
+
+    <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div>
+        <img src="images/p2_dashboard.jpg" alt="Bosh sahifa" class="w-full border border-white/10 rounded-[10px]">
+        <h4 class="font-display font-semibold text-paper text-[15px] mt-4">Bosh sahifa</h4>
+        <p class="mt-1 text-[12.5px] leading-snug text-paper/55">Bugungi safar, vaqt va holat bir joyda.</p>
+      </div>
+      <div>
+        <img src="images/p6_profil.jpg" alt="Bola profili" class="w-full border border-white/10 rounded-[10px]">
+        <h4 class="font-display font-semibold text-paper text-[15px] mt-4">Bola profili</h4>
+        <p class="mt-1 text-[12.5px] leading-snug text-paper/55">Ma'lumot va ruxsat etilgan shaxslar ro'yxati.</p>
+      </div>
+      <div>
+        <img src="images/p7_driver.jpg" alt="Haydovchi va transport" class="w-full border border-white/10 rounded-[10px]">
+        <h4 class="font-display font-semibold text-paper text-[15px] mt-4">Haydovchi va transport</h4>
+        <p class="mt-1 text-[12.5px] leading-snug text-paper/55">Haydovchi, mashina va reyting ko'rinadi.</p>
+      </div>
+      <div>
+        <img src="images/p8_marshrut.jpg" alt="Marshrut" class="w-full border border-white/10 rounded-[10px]">
+        <h4 class="font-display font-semibold text-paper text-[15px] mt-4">Marshrut</h4>
+        <p class="mt-1 text-[12.5px] leading-snug text-paper/55">Uy va bog'cha orasidagi yo'nalish xaritada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIVE TRACKING ================= -->
+<section class="bg-paper">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.15] text-navy max-w-[16ch]">
+      Har bir qadam ko'rinib turadi
+    </h2>
+    <p class="mt-5 text-[15.5px] leading-relaxed text-ink/70 max-w-[52ch]">
+      Bola yo'lga chiqqan paytdan bog'chaga yetib borguncha — ota-ona har lahzani kuzatib boradi.
+    </p>
+
+    <div class="mt-14 grid sm:grid-cols-3 gap-8 md:gap-10">
+      <div>
+        <img src="images/p3_tracking.jpg" alt="Jonli kuzatuv" class="w-full border border-line rounded-[10px]">
+        <h4 class="font-display font-semibold text-navy text-[16px] mt-4">Jonli kuzatuv</h4>
+        <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Mashina xaritada real vaqtda ko'rinadi, ETA hisoblanadi.</p>
+      </div>
+      <div>
+        <img src="images/p4_safar.jpg" alt="Safar holati" class="w-full border border-line rounded-[10px]">
+        <h4 class="font-display font-semibold text-navy text-[16px] mt-4">Safar holati</h4>
+        <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Har bir bosqich — chiqish, olib ketish, yetkazish — belgilanadi.</p>
+      </div>
+      <div>
+        <img src="images/p5_notif.jpg" alt="Xabarnomalar" class="w-full border border-line rounded-[10px]">
+        <h4 class="font-display font-semibold text-navy text-[16px] mt-4">Xabarnomalar</h4>
+        <p class="mt-1.5 text-[13.5px] leading-relaxed text-ink/65">Olib ketilgan va yetkazilgan daqiqada avtomatik xabar keladi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAFETY ================= -->
+<section id="xavfsizlik" class="bg-navy">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="grid md:grid-cols-2 gap-14">
+      <div>
+        <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.15] text-paper max-w-[13ch]">
+          Xavfsizlik protokoli
+        </h2>
+        <p class="mt-5 text-[15.5px] leading-relaxed text-paper/65 max-w-[40ch]">
+          Bola transporti oddiy taksi emas. Shu sababli KidsTaxi har bir
+          bosqichni aniq jarayon sifatida quradi.
+        </p>
+      </div>
+
+      <div class="divide-y divide-white/12">
+        <div class="flex gap-5 py-5 first:pt-0">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10.5" stroke="#D98E2B" stroke-width="1.5"/><path d="M9 14.5 l3.2 3.5 7-8.5" stroke="#D98E2B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <h4 class="font-display font-semibold text-paper text-[15.5px]">Tekshirilgan haydovchi</h4>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-paper/55">Har bir haydovchining shaxsi, litsenziyasi va tajribasi tasdiqlanadi.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 py-5">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="4" stroke="#D98E2B" stroke-width="1.5"/><path d="M6 24 C6 18, 22 18, 22 24" stroke="#D98E2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div>
+            <h4 class="font-display font-semibold text-paper text-[15.5px]">Bola uchun mas'ul hamroh</h4>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-paper/55">Kerak bo'lganda haydovchiga bola bilan shug'ullanadigan hamroh biriktiriladi.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 py-5">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none"><path d="M6 5 L18 23" stroke="#D98E2B" stroke-width="1.6" stroke-linecap="round"/><rect x="14.5" y="19" width="7" height="6" rx="1.2" stroke="#D98E2B" stroke-width="1.5"/><path d="M18 5 v6" stroke="#D98E2B" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <div>
+            <h4 class="font-display font-semibold text-paper text-[15.5px]">Xavfsizlik kamarlari</h4>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-paper/55">Har bir bola o'tirg'ichda kamar bilan mahkamlanadi.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 py-5">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="3" fill="#D98E2B"/><circle cx="14" cy="14" r="9" stroke="#D98E2B" stroke-width="1.3" opacity="0.55"/><circle cx="14" cy="14" r="15" stroke="#D98E2B" stroke-width="1.1" opacity="0.3"/></svg>
+          <div>
+            <h4 class="font-display font-semibold text-paper text-[15.5px]">GPS kuzatuv</h4>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-paper/55">Ota-ona mashina joylashuvini ilovadan real vaqtda ko'radi.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 py-5">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none"><path d="M8 20 v-9 a6 6 0 0 1 12 0 v9 l2.5 3.5 h-17 z" stroke="#D98E2B" stroke-width="1.5" stroke-linejoin="round"/><path d="M11.5 23.5 a2.5 2.5 0 0 0 5 0" stroke="#D98E2B" stroke-width="1.5"/></svg>
+          <div>
+            <h4 class="font-display font-semibold text-paper text-[15.5px]">Real-time xabarnomalar</h4>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-paper/55">Olib ketish va yetkazishning har bir bosqichida ota-onaga xabar boradi.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 py-5 last:pb-0">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 28 28" fill="none"><path d="M14 3 L23 7 V13.5 C23 20 19 24 14 25.5 C9 24 5 20 5 13.5 V7 Z" stroke="#D98E2B" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <div>
+            <h4 class="font-display font-semibold text-paper text-[15.5px]">Oldindan tasdiqlangan shaxsga topshirish</h4>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-paper/55">Bola faqat oldindan kelishilgan, tasdiqlangan shaxsga topshiriladi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOR PARENTS / FOR KINDERGARTENS ================= -->
+<section id="bogchalar" class="bg-paper">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="grid md:grid-cols-2 gap-16 md:gap-20">
+
+      <div>
+        <img src="images/hero-boy.jpg" alt="KidsTaxi bilan bog'chaga" class="w-full h-[280px] object-cover object-[70%_30%]">
+        <h2 class="font-display text-[24px] sm:text-[27px] leading-[1.2] text-navy mt-8">
+          Ota-onalar uchun
+        </h2>
+        <p class="mt-4 text-[14.5px] leading-relaxed text-ink/70 max-w-[42ch]">
+          KidsTaxi ota-onaning kuniga ikki marta duch keladigan eng katta
+          tashvishini yechadi — hammasi bitta ilovada.
+        </p>
+
+        <div class="mt-8 space-y-6">
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Bugungi safar</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Bugungi marshrut, vaqt va haydovchi ma'lumotini bir ekranda ko'radi.</p>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Jonli kuzatuv</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Bolasi qayerdaligini istalgan vaqtda xaritadan tekshiradi.</p>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Xabarnoma</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Olib ketilgan va yetkazilgan har bir daqiqada xabar oladi.</p>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Bola profili</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Bolasi haqidagi ma'lumot va ruxsat etilgan shaxslar ro'yxatini o'zi boshqaradi.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <img src="images/driver-van.jpg" alt="Bog'cha hamkorligi" class="w-full h-[280px] object-cover">
+        <h2 class="font-display text-[24px] sm:text-[27px] leading-[1.2] text-navy mt-8">
+          Bog'changiz uchun
+        </h2>
+        <p class="mt-4 text-[14.5px] leading-relaxed text-ink/70 max-w-[42ch]">
+          KidsTaxi bilan hamkorlik bog'changizga qo'shimcha yuk emas,
+          aksincha — ota-onalar nazarida qadriyat qo'shadi.
+        </p>
+
+        <div class="mt-8 space-y-6">
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Qo'shimcha xizmat</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Ota-onalarga bog'cha bilan birga foydalanish mumkin bo'lgan qo'shimcha qulaylik.</p>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Tanlov omili</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Transport muammosi sababli ikkilanayotgan oilalar uchun qo'shimcha imkoniyat.</p>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Yengillik</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Transportni tashkil qilish, haydovchi va marshrutni boshqarish to'liq KidsTaxi zimmasida.</p>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-5">
+            <div class="font-display italic font-semibold text-amber-deep text-[14.5px]">Zamonaviylik</div>
+            <p class="text-[13.5px] leading-relaxed text-ink/65">Bog'cha xizmatlari qatoriga zamonaviy transport platformasini qo'shish.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILOT / CTA ================= -->
+<section id="aloqa" class="bg-navy">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="grid md:grid-cols-2 gap-16">
+      <div>
+        <h2 class="font-display text-[28px] sm:text-[34px] leading-[1.15] text-paper max-w-[13ch]">
+          Boshlang'ich pilot
+        </h2>
+        <p class="mt-5 text-[15.5px] leading-relaxed text-paper/65 max-w-[40ch]">
+          To'liq narx tuzilmasidan oldin — cheklangan sonli bolalar uchun
+          pilot guruh bilan boshlaymiz.
+        </p>
+
+        <div class="mt-10 border border-white/20 p-8">
+          <div class="text-[11px] tracking-wide text-amber font-semibold">PILOT GURUH</div>
+          <h3 class="font-display font-medium text-[22px] text-paper mt-3">1–2 ta bog'cha bilan sinov</h3>
+          <ul class="mt-7 space-y-3 text-[14.5px] text-paper/80">
+            <li class="flex gap-3"><span class="text-amber-deep">—</span>Belgilangan marshrut</li>
+            <li class="flex gap-3"><span class="text-amber-deep">—</span>Belgilangan vaqt: 08:00 / 17:00</li>
+            <li class="flex gap-3"><span class="text-amber-deep">—</span>Oylik obuna</li>
+            <li class="flex gap-3"><span class="text-amber-deep">—</span>Ota-ona ilovasi orqali to'liq kuzatuv</li>
+          </ul>
+        </div>
+        <p class="mt-6 text-[13px] italic text-paper/45 max-w-[46ch] leading-relaxed">
+          Individual narx marshrut va masofaga qarab belgilanadi. Pilot
+          natijalari asosida alohida commercial taklif taqdim etiladi.
+        </p>
+      </div>
+
+      <div class="flex flex-col justify-between">
+        <div class="border border-white/20 p-8">
+          <div class="text-[11px] tracking-wide text-amber font-semibold">KEYINGI QADAM</div>
+          <h4 class="font-display font-semibold text-[19px] text-paper mt-3">30 daqiqalik uchrashuv</h4>
+          <p class="mt-3 text-[14px] leading-relaxed text-paper/65">
+            Bog'changiz va hududingiz uchun KidsTaxi pilot modelini
+            birgalikda muhokama qilamiz.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="tel:+998913495557" class="flex-1 inline-flex flex-col items-start rounded-2xl bg-paper px-6 py-5 hover:bg-paper-soft transition-colors">
+            <span class="text-[11px] tracking-wide text-ink/45">TELEFON</span>
+            <span class="font-display font-semibold text-navy text-[18px] mt-1">+998 91 349 55 57</span>
+          </a>
+          <a href="https://t.me/ravakhmedov" target="_blank" rel="noopener" class="flex-1 inline-flex flex-col items-start rounded-2xl bg-amber px-6 py-5 hover:bg-amber-deep transition-colors">
+            <span class="text-[11px] tracking-wide text-navy/60">TELEGRAM</span>
+            <span class="font-display font-semibold text-navy text-[18px] mt-1">@ravakhmedov</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-navy border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
+    <div class="flex items-center gap-2.5">
+      <img src="images/logo-icon.png" alt="KidsTaxi" class="w-7 h-7">
+      <span class="font-display italic font-semibold text-[15px] text-paper">KidsTaxi</span>
+    </div>
+    <p class="text-[13px] text-paper/45 text-center">© 2026 KidsTaxi · Namangan</p>
+    <div class="flex items-center gap-6 text-[13.5px] text-paper/60">
+      <a href="tel:+998913495557" class="hover:text-paper transition-colors">+998 91 349 55 57</a>
+      <a href="https://t.me/ravakhmedov" target="_blank" rel="noopener" class="hover:text-paper transition-colors">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  let open = false;
+  menuBtn.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      menu.style.maxHeight = menu.scrollHeight + 'px';
+      menu.style.opacity = '1';
+    } else {
+      menu.style.maxHeight = '0px';
+      menu.style.opacity = '0';
+    }
+  });
+  document.querySelectorAll('#mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      open = false;
+      menu.style.maxHeight = '0px';
+      menu.style.opacity = '0';
+    });
+  });
+</script>
+
+</body>
+</html>
